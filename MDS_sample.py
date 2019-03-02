@@ -76,10 +76,9 @@ def plotStress():
             fg = compute_full_gradient(pos)
             g = fg*rate*-1
             pos = np.add(g, pos)
-    #     print(iterlist[i], stress(pos))
         stresslist.append(stress(pos))
 
-
+    plt.figure(figsize=(9, 10))
     plt.plot(iterlist, stresslist)
     plt.xlabel('Iterations')
     plt.ylabel('Stress')
@@ -112,8 +111,8 @@ def simpleMDS():
     y=[]
     for i in pos:
         x.append(i[0])
-        y.append(i[1])
-    print(stress(pos))        
+        y.append(i[1])   
+    plt.figure(figsize=(9, 10))
     plt.scatter(x, y)
     plt.title('2-D MDS Similarities Plot, Using D=1-S Transformation')
     for i, names in enumerate(names):
@@ -140,7 +139,6 @@ def testMDS():
 
         pos = np.random.normal(0.0,1.0,size=(N,D))
         distances = distancesList[n]
-        print(distances)
         for steps in range(300):
 
             fg = compute_full_gradient(pos)
